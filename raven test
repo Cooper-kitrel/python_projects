@@ -1,0 +1,21 @@
+raven = 0
+gryyfindor = 0
+print('what is 2 + 2')
+print('1) 4')
+print('2) 5')
+
+answer = int(input('what is the answer (1-2):'))
+
+if answer == 1:
+	raven = raven + 1
+elif answer == 2:
+	gryyfindor = gryyfindor + 1
+else:
+	print('invalid answer')
+
+if raven > gryyfindor:
+	print('raven!')
+elif gryyfindor > raven:
+	print('gryyfindor')
+else:
+	print('try again')
