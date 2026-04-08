@@ -1,0 +1,11 @@
+{
+    "python.analysis.autoFormatStrings": false,
+    "python.formatting.provider": "ruff",
+    "editor.formatOnSave": true,
+    "jupyter.formatOnSave": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true
+    },
+    "notebook.formatOnSave.enabled": true
+}
