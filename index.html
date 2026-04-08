@@ -8,51 +8,109 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: #111827;
         }
 
         h1 {
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            margin-top: 28px;
             margin-bottom: 10px;
         }
 
-        .buttons a {
+        p {
+            margin-bottom: 14px;
+        }
+
+        ul {
+            margin-top: 8px;
+            padding-left: 22px;
+        }
+
+        .button {
             display: inline-block;
-            margin-right: 12px;
-            margin-top: 10px;
-            padding: 10px 16px;
+            margin-top: 18px;
+            padding: 12px 18px;
             text-decoration: none;
-            border: 1px solid #ccc;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
-            color: black;
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            background-color: #f3f4f6;
+        }
+
+        .section {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
     <h1>Video Game Forecasting</h1>
+
     <p>
-        Forecasting analysis project identifying the platform, genre, and regional factors
-        that influenced video game sales and supported 2017 campaign recommendations.
+        This project analyzes historical video game sales data to identify the platform,
+        genre, review, and regional factors that influenced game performance and to support
+        2017 marketing recommendations for an online game store.
+    </p>
+
+    <p>
+        Using a dataset of 16,715 games, I cleaned and prepared the data, explored platform
+        life cycles, compared critic and user review impact, analyzed genre and regional
+        sales differences, and tested key rating hypotheses to determine which segments were
+        most relevant for future advertising decisions.
+    </p>
+
+    <h2>Project Goal</h2>
+    <p>
+        The goal of this analysis was to determine which platforms, genres, and regions
+        showed the strongest sales potential so marketing resources could be allocated more
+        effectively for the 2017 campaign period.
     </p>
 
     <h2>Tools Used</h2>
-    <p>Python, Pandas, Matplotlib, SciPy, Statistical Analysis, Hypothesis Testing</p>
+    <p>
+        Python, Pandas, Matplotlib, SciPy, Exploratory Data Analysis, Statistical Analysis,
+        Hypothesis Testing
+    </p>
 
-    <h2>Key Results</h2>
+    <h2>What I Did</h2>
     <ul>
-        <li>Cleaned and analyzed 16,715 video game records.</li>
-        <li>Identified PS4, XOne, WiiU, 3DS, and PSV as the most relevant platforms.</li>
-        <li>Found critic scores were more predictive of sales than user scores.</li>
-        <li>Uncovered major regional differences across North America, Europe, and Japan.</li>
+        <li>Cleaned and transformed 16,715 game records by standardizing columns, converting data types, and preparing
+            sales fields for analysis.</li>
+        <li>Analyzed platform trends from 2012–2016 to identify the most relevant platforms for forward-looking campaign
+            decisions.</li>
+        <li>Compared critic and user review scores to evaluate how strongly each related to game sales performance.</li>
+        <li>Explored regional differences across North America, Europe, and Japan to uncover market-specific platform
+            and genre preferences.</li>
+        <li>Performed hypothesis testing to assess whether average user ratings differed across platforms and genres.
+        </li>
     </ul>
 
-    <div class="buttons">
-        <a href="project-notebook.html">View Full Notebook</a>
-        <a href="https://github.com/YOUR-USERNAME/YOUR-REPO">View GitHub Code</a>
-    </div>
+    <h2>Key Findings</h2>
+    <ul>
+        <li>PS4, XOne, WiiU, 3DS, and PSV emerged as the most relevant platforms for future campaign targeting.</li>
+        <li>Critic scores were more useful than user scores for predicting Xbox 360 sales.</li>
+        <li>Action, Shooter, and Sports were among the strongest genres overall, while Japan showed notably different
+            platform and genre preferences from North America and Europe.</li>
+        <li>The analysis supported data-driven recommendations for platform targeting, genre focus, and regional ad
+            strategy.</li>
+    </ul>
+
+    <a class="button"
+        href="https://nbviewer.org/github/Cooper-kitrel/python_projects/blob/master/Video_Game_Forecasting.ipynb"
+        target="_blank" rel="noopener noreferrer">
+        View Full Notebook
+    </a>
 </body>
 
 </html>
