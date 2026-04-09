@@ -4,20 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cooper Kitrel | Data Science Projects</title>
+    <title>Cooper Kitrel | Data Projects</title>
     <style>
         :root {
-            --bg: #0b1120;
-            --bg-soft: #111827;
-            --card: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text: #f9fafb;
-            --muted: #9ca3af;
+            --bg: #060b16;
+            --bg-secondary: #0b1220;
+            --surface: rgba(255, 255, 255, 0.05);
+            --surface-strong: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.12);
+            --text: #f8fafc;
+            --muted: #94a3b8;
             --accent: #60a5fa;
             --accent-strong: #3b82f6;
-            --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-            --radius: 18px;
-            --max-width: 1150px;
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            --radius: 22px;
+            --max-width: 1200px;
         }
 
         * {
@@ -31,12 +32,12 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 28%),
-                radial-gradient(circle at top right, rgba(96, 165, 250, 0.12), transparent 25%),
-                linear-gradient(180deg, #020617 0%, #0b1120 100%);
             color: var(--text);
-            line-height: 1.6;
+            background:
+                radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 28%),
+                radial-gradient(circle at top right, rgba(96, 165, 250, 0.12), transparent 24%),
+                linear-gradient(180deg, #020617 0%, #07101f 50%, #0b1220 100%);
+            line-height: 1.65;
         }
 
         .container {
@@ -47,25 +48,36 @@
         }
 
         .hero {
-            padding: 88px 0 48px;
+            padding: 88px 0 54px;
+            position: relative;
         }
 
-        .hero-badge {
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+        }
+
+        .eyebrow {
             display: inline-block;
             padding: 8px 14px;
-            border: 1px solid rgba(96, 165, 250, 0.35);
-            background: rgba(96, 165, 250, 0.08);
-            color: #bfdbfe;
             border-radius: 999px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            background: rgba(96, 165, 250, 0.08);
+            border: 1px solid rgba(96, 165, 250, 0.28);
+            color: #bfdbfe;
+            font-size: 0.88rem;
+            letter-spacing: 0.02em;
+            margin-bottom: 18px;
         }
 
-        .hero h1 {
+        h1 {
             margin: 0 0 18px;
-            font-size: clamp(2.2rem, 4vw, 4rem);
-            line-height: 1.1;
-            max-width: 820px;
+            font-size: clamp(2.4rem, 4vw, 4.4rem);
+            line-height: 1.05;
+            max-width: 900px;
+            letter-spacing: -0.03em;
         }
 
         .hero p {
@@ -75,75 +87,106 @@
             font-size: 1.08rem;
         }
 
-        .section-title {
-            margin: 20px 0 24px;
-            font-size: 1.8rem;
+        .section-header {
+            padding: 42px 0 18px;
         }
 
-        .projects {
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.9rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            margin: 10px 0 0;
+            color: var(--muted);
+            max-width: 760px;
+        }
+
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            padding-bottom: 72px;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 26px;
+            padding: 18px 0 72px;
         }
 
         .project-card {
-            background: var(--card);
-            border: 1px solid var(--card-border);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.04));
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 28px;
             box-shadow: var(--shadow);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
             min-height: 100%;
+            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
         }
 
-        .project-card h2 {
-            margin: 0 0 10px;
-            font-size: 1.35rem;
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(96, 165, 250, 0.35);
+            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4);
         }
 
-        .project-meta {
+        .project-label {
             color: #93c5fd;
-            font-size: 0.95rem;
-            margin-bottom: 14px;
+            font-size: 0.92rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
         }
 
-        .project-card p {
+        .project-card h3 {
+            margin: 0 0 12px;
+            font-size: 1.45rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .project-summary {
             color: var(--muted);
-            margin-top: 0;
-            margin-bottom: 18px;
+            margin: 0 0 18px;
+        }
+
+        .subheading {
+            margin: 0 0 10px;
+            font-size: 0.96rem;
+            color: #e2e8f0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
 
         .tag-wrap {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 22px;
         }
 
         .tag {
-            padding: 7px 10px;
+            padding: 7px 11px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 0.84rem;
             color: #dbeafe;
+            font-size: 0.84rem;
         }
 
-        .project-card ul {
-            margin: 0 0 24px 18px;
+        ul {
+            margin: 0 0 26px 18px;
             padding: 0;
-            color: #d1d5db;
+            color: #dbe4f0;
         }
 
-        .project-card li {
+        li {
             margin-bottom: 10px;
         }
 
         .button-row {
             margin-top: auto;
+            padding-top: 8px;
         }
 
         .button {
@@ -151,37 +194,41 @@
             padding: 12px 18px;
             text-decoration: none;
             border-radius: 12px;
-            font-weight: bold;
-            transition: 0.2s ease;
+            font-weight: 700;
             border: 1px solid transparent;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
         }
 
         .button-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
             color: white;
-            box-shadow: 0 10px 24px rgba(59, 130, 246, 0.28);
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            box-shadow: 0 12px 28px rgba(59, 130, 246, 0.28);
         }
 
         .button-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 14px 28px rgba(59, 130, 246, 0.35);
+            box-shadow: 0 16px 34px rgba(59, 130, 246, 0.34);
         }
 
         .footer {
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 24px 0 40px;
+            padding: 26px 0 40px;
             color: var(--muted);
-            font-size: 0.95rem;
             text-align: center;
+            font-size: 0.94rem;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 700px) {
             .hero {
                 padding-top: 64px;
             }
 
             .project-card {
                 padding: 22px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -190,38 +237,47 @@
 <body>
     <header class="hero">
         <div class="container">
-            <div class="hero-badge">Data Science • Analytics • Machine Learning</div>
-            <h1>Data Projects Focused on Business Insight and Decision-Making</h1>
+            <div class="eyebrow">Data Science • Analytics • Business Insight</div>
+            <h1>Projects Built to Turn Raw Data Into Clear Business Decisions</h1>
             <p>
-                A selection of analytics and data science projects built in Python and Tableau,
-                focused on forecasting, customer behavior, revenue analysis, and business recommendations.
-                Each project highlights a structured approach to data cleaning, exploratory analysis,
-                visualization, and statistical reasoning.
+                This portfolio highlights three data analysis projects focused on forecasting, customer behavior,
+                revenue analysis, and business recommendations. Each project demonstrates practical experience
+                with data cleaning, exploratory analysis, visualization, and statistical reasoning using real-world
+                datasets.
             </p>
         </div>
     </header>
 
     <main class="container">
-        <h2 class="section-title">Featured Projects</h2>
+        <section class="section-header">
+            <h2>Featured Projects</h2>
+            <p>
+                Selected projects showcasing business-focused analytics across gaming, telecom, and e-commerce datasets.
+            </p>
+        </section>
 
-        <section class="projects">
+        <section class="projects-grid">
 
             <article class="project-card">
-                <h2>Video Game Forecasting</h2>
-                <div class="project-meta">Python • Pandas • Matplotlib • SciPy • Statistical Analysis</div>
-                <p>
-                    Forecasting analysis project evaluating historical video game sales to identify
-                    the platform, genre, review, and regional factors that influenced performance and
-                    supported 2017 marketing recommendations.
+                <div class="project-label">Forecasting & Market Analysis</div>
+                <h3>Video Game Forecasting</h3>
+                <p class="project-summary">
+                    Forecasting analysis project evaluating historical video game sales to identify the platform,
+                    genre, review, and regional factors that influenced performance and supported 2017 marketing
+                    recommendations.
                 </p>
 
+                <p class="subheading">Tools Used</p>
                 <div class="tag-wrap">
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">Matplotlib</span>
+                    <span class="tag">SciPy</span>
                     <span class="tag">EDA</span>
                     <span class="tag">Hypothesis Testing</span>
-                    <span class="tag">Forecasting</span>
-                    <span class="tag">Regional Analysis</span>
                 </div>
 
+                <p class="subheading">Highlights</p>
                 <ul>
                     <li>Cleaned and transformed a dataset of 16,715 games to prepare it for analysis and sales modeling.
                     </li>
@@ -242,21 +298,25 @@
             </article>
 
             <article class="project-card">
-                <h2>Megaline Plan Revenue Analysis</h2>
-                <div class="project-meta">Python • Pandas • NumPy • Matplotlib • SciPy</div>
-                <p>
+                <div class="project-label">Revenue & Statistical Analysis</div>
+                <h3>Megaline Plan Revenue Analysis</h3>
+                <p class="project-summary">
                     Telecom revenue analysis project comparing customer behavior across prepaid plans
-                    to determine which plan generated stronger average revenue and should receive greater
-                    advertising support.
+                    to determine which plan generated stronger average revenue and should receive greater advertising
+                    support.
                 </p>
 
+                <p class="subheading">Tools Used</p>
                 <div class="tag-wrap">
-                    <span class="tag">Revenue Analysis</span>
-                    <span class="tag">Hypothesis Testing</span>
-                    <span class="tag">Customer Analytics</span>
-                    <span class="tag">Business Recommendation</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Matplotlib</span>
+                    <span class="tag">SciPy</span>
+                    <span class="tag">Statistical Analysis</span>
                 </div>
 
+                <p class="subheading">Highlights</p>
                 <ul>
                     <li>Cleaned and merged 5 telecom datasets covering 500 customers, usage activity, and plan details.
                     </li>
@@ -278,20 +338,24 @@
             </article>
 
             <article class="project-card">
-                <h2>Instacart Market Basket Analysis</h2>
-                <div class="project-meta">Python • Pandas • Matplotlib • Data Cleaning • Visualization</div>
-                <p>
+                <div class="project-label">Customer Behavior & Basket Analysis</div>
+                <h3>Instacart Market Basket Analysis</h3>
+                <p class="project-summary">
                     Customer behavior analysis project exploring shopping patterns, reorder habits,
                     basket size, and product demand trends for an online grocery platform.
                 </p>
 
+                <p class="subheading">Tools Used</p>
                 <div class="tag-wrap">
-                    <span class="tag">Customer Behavior</span>
-                    <span class="tag">Basket Analysis</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">Matplotlib</span>
                     <span class="tag">Data Cleaning</span>
                     <span class="tag">Visualization</span>
+                    <span class="tag">EDA</span>
                 </div>
 
+                <p class="subheading">Highlights</p>
                 <ul>
                     <li>Cleaned and explored multiple Instacart datasets covering orders, products, departments, and
                         aisles.</li>
@@ -315,7 +379,7 @@
 
     <footer class="footer">
         <div class="container">
-            Built to showcase data analysis, statistical reasoning, and business-focused storytelling.
+            Built to showcase technical analysis, statistical reasoning, and business-focused storytelling.
         </div>
     </footer>
 </body>
