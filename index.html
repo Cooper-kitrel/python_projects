@@ -2,98 +2,322 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Game Forecasting Project</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cooper Kitrel | Data Science Projects</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.6;
-            color: #111827;
+        :root {
+            --bg: #0b1120;
+            --bg-soft: #111827;
+            --card: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text: #f9fafb;
+            --muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-strong: #3b82f6;
+            --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            --radius: 18px;
+            --max-width: 1150px;
         }
 
-        h1,
-        h2 {
-            color: #111827;
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 28%),
+                radial-gradient(circle at top right, rgba(96, 165, 250, 0.12), transparent 25%),
+                linear-gradient(180deg, #020617 0%, #0b1120 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero {
+            padding: 88px 0 48px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid rgba(96, 165, 250, 0.35);
+            background: rgba(96, 165, 250, 0.08);
+            color: #bfdbfe;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            margin: 0 0 18px;
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            line-height: 1.1;
+            max-width: 820px;
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .section-title {
+            margin: 20px 0 24px;
+            font-size: 1.8rem;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            padding-bottom: 72px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        .project-card h2 {
+            margin: 0 0 10px;
+            font-size: 1.35rem;
+        }
+
+        .project-meta {
+            color: #93c5fd;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-top: 0;
+            margin-bottom: 18px;
+        }
+
+        .tag-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.84rem;
+            color: #dbeafe;
+        }
+
+        .project-card ul {
+            margin: 0 0 24px 18px;
+            padding: 0;
+            color: #d1d5db;
+        }
+
+        .project-card li {
+            margin-bottom: 10px;
+        }
+
+        .button-row {
+            margin-top: auto;
         }
 
         .button {
             display: inline-block;
-            margin-top: 20px;
             padding: 12px 18px;
             text-decoration: none;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            color: #111827;
+            border-radius: 12px;
             font-weight: bold;
+            transition: 0.2s ease;
+            border: 1px solid transparent;
         }
 
-        .button:hover {
-            background-color: #f3f4f6;
+        .button-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: white;
+            box-shadow: 0 10px 24px rgba(59, 130, 246, 0.28);
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(59, 130, 246, 0.35);
+        }
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 24px 0 40px;
+            color: var(--muted);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding-top: 64px;
+            }
+
+            .project-card {
+                padding: 22px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Video Game Forecasting</h1>
+    <header class="hero">
+        <div class="container">
+            <div class="hero-badge">Data Science • Analytics • Machine Learning</div>
+            <h1>Data Projects Focused on Business Insight and Decision-Making</h1>
+            <p>
+                A selection of analytics and data science projects built in Python and Tableau,
+                focused on forecasting, customer behavior, revenue analysis, and business recommendations.
+                Each project highlights a structured approach to data cleaning, exploratory analysis,
+                visualization, and statistical reasoning.
+            </p>
+        </div>
+    </header>
 
-    <p>
-        This project analyzes historical video game sales data to identify the platform,
-        genre, review, and regional factors that influenced game performance and to support
-        2017 marketing recommendations for an online game store.
-    </p>
+    <main class="container">
+        <h2 class="section-title">Featured Projects</h2>
 
-    <p>
-        Using a dataset of 16,715 games, I cleaned and prepared the data, explored platform
-        life cycles, compared critic and user review impact, analyzed genre and regional
-        sales differences, and tested key rating hypotheses to determine which segments were
-        most relevant for future advertising decisions.
-    </p>
+        <section class="projects">
 
-    <h2>Project Goal</h2>
-    <p>
-        The goal of this analysis was to determine which platforms, genres, and regions
-        showed the strongest sales potential so marketing resources could be allocated more
-        effectively for the 2017 campaign period.
-    </p>
+            <article class="project-card">
+                <h2>Video Game Forecasting</h2>
+                <div class="project-meta">Python • Pandas • Matplotlib • SciPy • Statistical Analysis</div>
+                <p>
+                    Forecasting analysis project evaluating historical video game sales to identify
+                    the platform, genre, review, and regional factors that influenced performance and
+                    supported 2017 marketing recommendations.
+                </p>
 
-    <h2>Tools Used</h2>
-    <p>
-        Python, Pandas, Matplotlib, SciPy, Exploratory Data Analysis, Statistical Analysis,
-        Hypothesis Testing
-    </p>
+                <div class="tag-wrap">
+                    <span class="tag">EDA</span>
+                    <span class="tag">Hypothesis Testing</span>
+                    <span class="tag">Forecasting</span>
+                    <span class="tag">Regional Analysis</span>
+                </div>
 
-    <h2>What I Did</h2>
-    <ul>
-        <li>Cleaned and transformed 16,715 game records by standardizing columns, converting data types, and preparing
-            sales fields for analysis.</li>
-        <li>Analyzed platform trends from 2012 to 2016 to identify the most relevant platforms for forward-looking
-            campaign decisions.</li>
-        <li>Compared critic and user review scores to evaluate how strongly each related to game sales performance.</li>
-        <li>Explored regional differences across North America, Europe, and Japan to uncover market-specific platform
-            and genre preferences.</li>
-        <li>Performed hypothesis testing to assess whether average user ratings differed across platforms and genres.
-        </li>
-    </ul>
+                <ul>
+                    <li>Cleaned and transformed a dataset of 16,715 games to prepare it for analysis and sales modeling.
+                    </li>
+                    <li>Identified PS4, XOne, WiiU, 3DS, and PSV as the most relevant platforms for campaign targeting.
+                    </li>
+                    <li>Found critic scores were more predictive of sales than user scores for Xbox 360 titles.</li>
+                    <li>Analyzed regional differences across North America, Europe, and Japan to support market-specific
+                        recommendations.</li>
+                </ul>
 
-    <h2>Key Findings</h2>
-    <ul>
-        <li>PS4, XOne, WiiU, 3DS, and PSV emerged as the most relevant platforms for future campaign targeting.</li>
-        <li>Critic scores were more useful than user scores for predicting Xbox 360 sales.</li>
-        <li>Action, Shooter, and Sports were among the strongest genres overall, while Japan showed different platform
-            and genre preferences from North America and Europe.</li>
-        <li>The analysis supported data-driven recommendations for platform targeting, genre focus, and regional ad
-            strategy.</li>
-    </ul>
+                <div class="button-row">
+                    <a class="button button-primary"
+                        href="https://nbviewer.org/github/Cooper-kitrel/python_projects/blob/master/Video_Game_Forecasting.ipynb"
+                        target="_blank" rel="noopener noreferrer">
+                        View Full Notebook
+                    </a>
+                </div>
+            </article>
 
-    <a class="button"
-        href="https://nbviewer.org/github/Cooper-kitrel/python_projects/blob/master/Video_Game_Forecasting.ipynb"
-        target="_blank">
-        View Full Notebook
-    </a>
+            <article class="project-card">
+                <h2>Megaline Plan Revenue Analysis</h2>
+                <div class="project-meta">Python • Pandas • NumPy • Matplotlib • SciPy</div>
+                <p>
+                    Telecom revenue analysis project comparing customer behavior across prepaid plans
+                    to determine which plan generated stronger average revenue and should receive greater
+                    advertising support.
+                </p>
+
+                <div class="tag-wrap">
+                    <span class="tag">Revenue Analysis</span>
+                    <span class="tag">Hypothesis Testing</span>
+                    <span class="tag">Customer Analytics</span>
+                    <span class="tag">Business Recommendation</span>
+                </div>
+
+                <ul>
+                    <li>Cleaned and merged 5 telecom datasets covering 500 customers, usage activity, and plan details.
+                    </li>
+                    <li>Calculated monthly revenue, including overage charges for calls, messages, and internet usage.
+                    </li>
+                    <li>Performed statistical testing to compare revenue between Surf and Ultimate plans and across
+                        regions.</li>
+                    <li>Supported a recommendation to prioritize the Ultimate plan based on stronger average monthly
+                        revenue.</li>
+                </ul>
+
+                <div class="button-row">
+                    <a class="button button-primary"
+                        href="https://nbviewer.org/github/Cooper-kitrel/python_projects/blob/master/Megaline%20analysis.ipynb"
+                        target="_blank" rel="noopener noreferrer">
+                        View Full Notebook
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <h2>Instacart Market Basket Analysis</h2>
+                <div class="project-meta">Python • Pandas • Matplotlib • Data Cleaning • Visualization</div>
+                <p>
+                    Customer behavior analysis project exploring shopping patterns, reorder habits,
+                    basket size, and product demand trends for an online grocery platform.
+                </p>
+
+                <div class="tag-wrap">
+                    <span class="tag">Customer Behavior</span>
+                    <span class="tag">Basket Analysis</span>
+                    <span class="tag">Data Cleaning</span>
+                    <span class="tag">Visualization</span>
+                </div>
+
+                <ul>
+                    <li>Cleaned and explored multiple Instacart datasets covering orders, products, departments, and
+                        aisles.</li>
+                    <li>Identified when customers most often shop, with demand concentrated between 9 AM and 5 PM.</li>
+                    <li>Analyzed reorder timing and found many customers followed a weekly purchase cycle.</li>
+                    <li>Measured basket size and reorder patterns to uncover purchasing behavior and category demand.
+                    </li>
+                </ul>
+
+                <div class="button-row">
+                    <a class="button button-primary"
+                        href="https://nbviewer.org/github/Cooper-kitrel/python_projects/blob/master/instacart%20analysis.ipynb"
+                        target="_blank" rel="noopener noreferrer">
+                        View Full Notebook
+                    </a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            Built to showcase data analysis, statistical reasoning, and business-focused storytelling.
+        </div>
+    </footer>
 </body>
 
 </html>
